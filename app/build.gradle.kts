@@ -2,6 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -82,4 +83,8 @@ dependencies {
     kapt(Hilt.hiltAndroidCompiler)
     implementation(Hilt.hiltLifecycleViewModel)
     kapt(Hilt.hiltCompiler)
+}
+
+kapt {
+    correctErrorTypes = true
 }
