@@ -67,4 +67,10 @@ dependencies {
     androidTestImplementation(JetpackComposeAndroidTestImplementation.composeUiTest)
     debugImplementation(JetpackComposeDebugImplementation.composeUiTooling)
     debugImplementation(JetpackComposeDebugImplementation.composeUiTestManifest)
+
+    implementation(Retrofit2.retrofit)
+    implementation(Retrofit2.converterGson)
+    implementation(OkHttp3.okhttp3Bom)
+    implementation(OkHttp3.okhttp3Okhttp)
+    implementation(OkHttp3.okhttp3LoggingInterceptor)
 }

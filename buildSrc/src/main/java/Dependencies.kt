@@ -7,6 +7,8 @@ object Version {
     const val junit = "4.13.2"
     const val junitAndroid = "1.1.5"
     const val espressoCore = "3.5.1"
+    const val retrofit = "2.9.0"
+    const val okhttp3Bom = "4.9.1"
 }
 
 object Deps {
@@ -43,4 +45,15 @@ object TestImplementation {
 object AndroidTestImplementation {
     const val junit = "androidx.test.ext:junit:${Version.junitAndroid}"
     const val espresso = "androidx.test.espresso:espresso-core:${Version.espressoCore}"
+}
+
+object Retrofit2 {
+    const val retrofit = "com.squareup.retrofit2:retrofit:${Version.retrofit}"
+    const val converterGson = "com.squareup.retrofit2:converter-gson:${Version.retrofit}"
+}
+
+object OkHttp3 {
+    const val okhttp3Bom = "com.squareup.okhttp3:okhttp-bom:${Version.okhttp3Bom}"
+    const val okhttp3Okhttp = "com.squareup.okhttp3:okhttp"
+    const val okhttp3LoggingInterceptor = "com.squareup.okhttp3:logging-interceptor"
 }
