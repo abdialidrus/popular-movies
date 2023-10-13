@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -73,4 +74,7 @@ dependencies {
     implementation(OkHttp3.okhttp3Bom)
     implementation(OkHttp3.okhttp3Okhttp)
     implementation(OkHttp3.okhttp3LoggingInterceptor)
+
+    implementation(Room.roomRuntime)
+    kapt(Room.roomCompiler)
 }

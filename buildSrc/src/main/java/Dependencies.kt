@@ -9,6 +9,7 @@ object Version {
     const val espressoCore = "3.5.1"
     const val retrofit = "2.9.0"
     const val okhttp3Bom = "4.9.1"
+    const val room = "2.5.2"
 }
 
 object Deps {
@@ -56,4 +57,9 @@ object OkHttp3 {
     const val okhttp3Bom = "com.squareup.okhttp3:okhttp-bom:${Version.okhttp3Bom}"
     const val okhttp3Okhttp = "com.squareup.okhttp3:okhttp"
     const val okhttp3LoggingInterceptor = "com.squareup.okhttp3:logging-interceptor"
+}
+
+object Room {
+    const val roomRuntime = "androidx.room:room-runtime:${Version.room}"
+    const val roomCompiler = "androidx.room:room-compiler:${Version.room}"
 }
