@@ -10,5 +10,5 @@ interface MovieRepository {
 
     fun getMovieById(id: Int): Movie?
 
-    fun setMovieAsFavorite(movie: Movie): Movie?
+    fun toggleMovieFavorite(movieId: Int, isFavorite: Boolean): Movie
 }
