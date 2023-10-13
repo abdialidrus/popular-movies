@@ -77,4 +77,9 @@ dependencies {
 
     implementation(Room.roomRuntime)
     kapt(Room.roomCompiler)
+
+    implementation(Hilt.hiltAndroid)
+    kapt(Hilt.hiltAndroidCompiler)
+    implementation(Hilt.hiltLifecycleViewModel)
+    kapt(Hilt.hiltCompiler)
 }

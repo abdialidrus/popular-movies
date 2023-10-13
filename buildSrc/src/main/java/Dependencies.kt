@@ -10,6 +10,10 @@ object Version {
     const val retrofit = "2.9.0"
     const val okhttp3Bom = "4.9.1"
     const val room = "2.5.2"
+    const val hiltAndroid = "2.47"
+    const val hiltCompiler = "1.0.0"
+    const val hiltLifecycleViewModel = "1.0.0-alpha03"
+    const val hiltAndroidCompiler = "2.44"
 }
 
 object Deps {
@@ -62,4 +66,11 @@ object OkHttp3 {
 object Room {
     const val roomRuntime = "androidx.room:room-runtime:${Version.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Version.room}"
+}
+
+object Hilt {
+    const val hiltAndroid = "com.google.dagger:hilt-android:${Version.hiltAndroid}"
+    const val hiltAndroidCompiler = "com.google.dagger:hilt-android-compiler:${Version.hiltAndroidCompiler}"
+    const val hiltLifecycleViewModel = "androidx.hilt:hilt-lifecycle-viewmodel:${Version.hiltLifecycleViewModel}"
+    const val hiltCompiler = "androidx.hilt:hilt-compiler:${Version.hiltCompiler}"
 }
