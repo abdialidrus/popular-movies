@@ -18,6 +18,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.icons.Icons
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
@@ -28,6 +29,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.abdialidrus.popularmovies.domain.model.Movie
 import com.abdialidrus.popularmovies.presentation.common.components.MovieItem
@@ -50,22 +52,22 @@ fun PopularMoviesScreen(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(start = 12.dp, end = 12.dp, top = 12.dp),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center
+            horizontalAlignment = Alignment.Start,
+            verticalArrangement = Arrangement.Top
         ) {
-            Row(
-                modifier = Modifier.fillMaxWidth(),
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                Text(
-                    text = "Popular Movies",
-                    style = MaterialTheme.typography.headlineMedium
-                )
-
-            }
+            Text(
+                text = "Popular Movies",
+                style = MaterialTheme.typography.headlineMedium
+            )
 
             Spacer(modifier = Modifier.height(16.dp))
+
+            if (movies.loadState.refresh is LoadState.Loading && movies.itemCount > 0) {
+                Column(modifier = Modifier.fillMaxWidth(), horizontalAlignment = Alignment.CenterHorizontally) {
+                    CircularProgressIndicator()
+                }
+            }
+
             PopularMovieList(movies = movies,
                 onClick = {navigateToDetail(it)}) { movie ->
                 viewModel.onEvent(PopularMoviesEvent.LikeMovie(movie))

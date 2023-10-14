@@ -43,12 +43,6 @@ fun PopularMoviesApp() {
                     )
                 ) {
                     MovieDetailScreen()
-//                    navController.previousBackStackEntry?.savedStateHandle?.get<Movie?>("movie")
-//                        ?.let { movie ->
-//                            MovieDetailScreen(
-//                                movie = movie
-//                            )
-//                        }
                 }
 
             }
