@@ -4,6 +4,7 @@ import com.abdialidrus.popularmovies.data.source.local.MovieDao
 import com.abdialidrus.popularmovies.data.source.remote.MoviesApi
 import com.abdialidrus.popularmovies.domain.model.Movie
 import com.abdialidrus.popularmovies.domain.repository.MovieRepository
+import com.abdialidrus.popularmovies.util.Resource
 import kotlinx.coroutines.flow.Flow
 
 class MovieRepositoryImpl(
@@ -11,19 +12,19 @@ class MovieRepositoryImpl(
     private val api: MoviesApi
 ): MovieRepository {
 
-    override fun getPopularMovies(): Flow<List<Movie>> {
+    override fun getPopularMovies(): Flow<Resource<List<Movie>>> {
         TODO("Not yet implemented")
     }
 
-    override fun getFavoriteMovies(): Flow<List<Movie>> {
+    override fun getFavoriteMovies(): Flow<Resource<List<Movie>>> {
         TODO("Not yet implemented")
     }
 
-    override fun getMovieById(id: Int): Movie? {
+    override fun getMovieById(id: Int): Resource<Movie> {
         TODO("Not yet implemented")
     }
 
-    override fun toggleMovieFavorite(movieId: Int, isFavorite: Boolean): Movie {
+    override fun toggleMovieFavorite(movieId: Int, isFavorite: Boolean): Resource<Movie> {
         TODO("Not yet implemented")
     }
 
