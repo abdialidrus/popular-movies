@@ -3,16 +3,18 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id("kotlin-parcelize")
+
 }
 
 android {
     namespace = "com.abdialidrus.popularmovies"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.abdialidrus.popularmovies"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -82,8 +84,15 @@ dependencies {
 
     implementation(Hilt.hiltAndroid)
     kapt(Hilt.hiltAndroidCompiler)
-    implementation(Hilt.hiltLifecycleViewModel)
+    //implementation(Hilt.hiltLifecycleViewModel)
     kapt(Hilt.hiltCompiler)
+
+    implementation("androidx.navigation:navigation-compose:2.7.4")
+    implementation("androidx.hilt:hilt-navigation-compose:1.0.0-alpha03")
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+    implementation("androidx.paging:paging-runtime:3.1.1")
+    implementation("androidx.paging:paging-compose:3.2.0-rc01")
 }
 
 kapt {

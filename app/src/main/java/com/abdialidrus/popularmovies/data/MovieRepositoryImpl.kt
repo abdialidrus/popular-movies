@@ -1,6 +1,10 @@
 package com.abdialidrus.popularmovies.data
 
+import androidx.paging.Pager
+import androidx.paging.PagingConfig
+import androidx.paging.PagingData
 import com.abdialidrus.popularmovies.data.source.local.MovieDao
+import com.abdialidrus.popularmovies.data.source.remote.MoviePagingSource
 import com.abdialidrus.popularmovies.data.source.remote.MoviesApi
 import com.abdialidrus.popularmovies.domain.model.Movie
 import com.abdialidrus.popularmovies.domain.repository.MovieRepository
@@ -13,22 +17,13 @@ class MovieRepositoryImpl(
     private val api: MoviesApi
 ) : MovieRepository {
 
-    override fun getPopularMovies(): Flow<Resource<List<Movie>>> {
-        return flow {
-            emit(Resource.Loading(true))
-            try {
-                val response = api.getPopularMovies(1)
-                response.results.forEach { movieDto ->
-                    dao.insertMovie(movieDto.toEntity(isFavoriteMovie(movieDto.id)))
-                }
-
-                emit(Resource.Success(data = response.results.map { it.toMovie(isFavoriteMovie(it.id)) }))
-            } catch (e: Exception) {
-                e.printStackTrace()
-                emit(Resource.Error("Couldn't load data"))
+    override fun getPopularMovies(): Flow<PagingData<Movie>> {
+        return Pager(
+            config = PagingConfig(pageSize = 20),
+            pagingSourceFactory = {
+                MoviePagingSource(api, dao)
             }
-            emit(Resource.Loading(false))
-        }
+        ).flow
     }
 
     override fun getFavoriteMovies(): Flow<Resource<List<Movie>>> {
@@ -49,8 +44,8 @@ class MovieRepositoryImpl(
         return flow {
             emit(Resource.Loading(true))
             try {
-                val remoteMovie = api.getMovieDetail(id)
-                emit(Resource.Success(data = remoteMovie.toMovie(isFavoriteMovie(remoteMovie.id))))
+                val cachedMovie = dao.getMovieById(id)
+                emit(Resource.Success(data = cachedMovie?.toMovie()))
             } catch (e: Exception) {
                 e.printStackTrace()
                 emit(Resource.Error("Couldn't load data"))

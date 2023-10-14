@@ -10,7 +10,7 @@ data class MovieEntity(
     val title: String,
     val overview: String,
     val posterUrl: String,
-    val backdropUrl: String,
+    val backdropUrl: String?,
     val releaseDate: String,
     val voteAverage: Double,
     val voteCount: Int,

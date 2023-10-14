@@ -8,6 +8,6 @@ import kotlinx.coroutines.flow.Flow
 class GetFavoriteMovies(private val repository: MovieRepository) {
 
     operator fun invoke(): Flow<Resource<List<Movie>>> {
-        return repository.getPopularMovies()
+        return repository.getFavoriteMovies()
     }
 }
