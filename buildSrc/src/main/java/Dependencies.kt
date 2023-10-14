@@ -66,6 +66,7 @@ object OkHttp3 {
 object Room {
     const val roomRuntime = "androidx.room:room-runtime:${Version.room}"
     const val roomCompiler = "androidx.room:room-compiler:${Version.room}"
+    const val roomKtx = "androidx.room:room-ktx:${Version.room}"
 }
 
 object Hilt {
