@@ -6,12 +6,11 @@ import com.abdialidrus.popularmovies.data.MovieRepositoryImpl
 import com.abdialidrus.popularmovies.data.source.local.MovieDatabase
 import com.abdialidrus.popularmovies.data.source.remote.MoviesApi
 import com.abdialidrus.popularmovies.domain.repository.MovieRepository
-import com.abdialidrus.popularmovies.domain.use_case.FavoriteMovie
 import com.abdialidrus.popularmovies.domain.use_case.GetFavoriteMovies
 import com.abdialidrus.popularmovies.domain.use_case.GetMovieDetail
 import com.abdialidrus.popularmovies.domain.use_case.GetPopularMovies
+import com.abdialidrus.popularmovies.domain.use_case.LikeOrDislikeMovie
 import com.abdialidrus.popularmovies.domain.use_case.MovieUseCases
-import com.abdialidrus.popularmovies.domain.use_case.UnFavoriteMovie
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -42,11 +41,10 @@ object AppModule {
     @Singleton
     fun provideMoviesUseCases(repository: MovieRepository): MovieUseCases {
         return MovieUseCases(
-            favoriteMovie = FavoriteMovie(repository),
+            likeOrDislikeMovie = LikeOrDislikeMovie(repository),
             getFavoriteMovies = GetFavoriteMovies(repository),
             getMovieDetail = GetMovieDetail(repository),
             getPopularMovies = GetPopularMovies(repository),
-            unFavoriteMovie = UnFavoriteMovie(repository)
         )
     }
 }

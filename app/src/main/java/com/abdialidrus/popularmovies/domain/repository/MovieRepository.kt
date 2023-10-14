@@ -11,5 +11,5 @@ interface MovieRepository {
 
     fun getMovieDetail(id: Int): Flow<Resource<Movie>>
 
-    fun toggleMovieFavorite(movie: Movie, isFavorite: Boolean): Flow<Resource<Movie?>>
+    fun toggleMovieFavorite(movie: Movie): Flow<Resource<Movie?>>
 }

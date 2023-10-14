@@ -14,7 +14,7 @@ fun MovieEntity.toMovie(): Movie {
         releaseDate = releaseDate,
         voteAverage = voteAverage,
         voteCount = voteCount,
-        isFavorite = true,
+        isFavorite = isFavorite,
         popularity = popularity
     )
 }
@@ -26,6 +26,36 @@ fun MovieDto.toMovie(isFavorite: Boolean): Movie {
         overview = overview,
         posterUrl = posterPath,
         backdropUrl = backdropPath,
+        releaseDate = releaseDate,
+        voteAverage = voteAverage,
+        voteCount = voteCount,
+        isFavorite = isFavorite,
+        popularity = popularity
+    )
+}
+
+fun MovieDto.toEntity(isFavorite: Boolean): MovieEntity {
+    return MovieEntity(
+        id = id,
+        title = title,
+        overview = overview,
+        posterUrl = posterPath,
+        backdropUrl = backdropPath,
+        releaseDate = releaseDate,
+        voteAverage = voteAverage,
+        voteCount = voteCount,
+        isFavorite = isFavorite,
+        popularity = popularity
+    )
+}
+
+fun Movie.toEntity(isFavorite: Boolean): MovieEntity {
+    return MovieEntity(
+        id = id,
+        title = title,
+        overview = overview,
+        posterUrl = posterUrl,
+        backdropUrl = backdropUrl,
         releaseDate = releaseDate,
         voteAverage = voteAverage,
         voteCount = voteCount,
